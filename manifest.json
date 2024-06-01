@@ -9,7 +9,7 @@
         "scripts/pip.js"
       ],
       "matches": [
-        "https://www.youtube.com/*"
+        "<all_urls>"
       ]
     }
   ]
