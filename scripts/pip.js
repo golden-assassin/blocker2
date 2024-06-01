@@ -11,26 +11,8 @@ if (location.host === "www.youtube.com") {
     document.pictureInPictureElement ? document.exitPictureInPicture() : video.requestPictureInPicture();
   }
   function addPiPButton() {
-    // const controls = document.querySelector(".ytp-right-controls");
-    // if (controls) {
-    //   const button = document.createElement('button');
-    //   button.innerHTML = 'PiP';
-    //   button.style.cssText = "height:55%;opacity:0.9;display:inline-block;width:48px;padding:0px 2px;overflow:hidden;position:relative;top:-20px;background:transparent;border:1px solid #fff;color:#fff;border-radius:10vh;";
-    //   button.addEventListener('click', togglePiP);
-    //   controls.appendChild(button);
-    // } else if (retry < MAX_RETRY) {
-    //   retry++;
-    //   setTimeout(addPiPButton, 1000);
-    // }
     console.log("a")
   }
-  function sponsor_ads() {
-    const sponsor_list = document.querySelectorAll("ytd-player-legacy-desktop-watch-ads-renderer, #player-ads,ytd-video-masthead-ad-v3-renderer")
-    for (const sponsor of sponsor_list) {
-      sponsor && sponsor.remove()
-    }
-  }
-
   function waitVideoLoad() {
     (location.pathname === "/watch" && document.readyState === "complete") ?
     (video = document.querySelector('video.html5-main-video')) ? addPiPButton() :
@@ -40,31 +22,12 @@ if (location.host === "www.youtube.com") {
   window.addEventListener('beforeunload', () => {
     window.removeEventListener('keydown', input);
   });
-
   waitVideoLoad();
-  sponsor_ads()
 } else {
   const video = document.querySelector('video');
 let permit = true;
 
 if (video) {
-  function togglePictureInPicture() {
-    if (document.pictureInPictureElement) {
-      document.exitPictureInPicture();
-    } else {
-      video.requestPictureInPicture();
-    }
-    if (video.hasAttribute('disablePictureInPicture')) {
-      video.removeAttribute('disablePictureInPicture');
-    }
-  }
-  function input(event) {
-    if (event.key === "A" && permit) {
-      togglePictureInPicture();
-    } else if (event.key === "R") {
-      permit = !permit;
-    }
-  }
   window.addEventListener('keydown', input);
   window.addEventListener('beforeunload', () => {
     window.removeEventListener('keydown', input);
