@@ -6,7 +6,6 @@
   "content_scripts": [
     {
       "js": [
-        "scripts/contents.js",
         "scripts/pip.js"
       ],
       "matches": [
